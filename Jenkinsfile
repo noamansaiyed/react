@@ -15,12 +15,8 @@ pipeline {
         stage 'build' {
          sh 'npm run build'
           sh "tar -cvf build.tar /app/build/"
-         archiveArtifacts artifacts: 'build.tar', fingerprint: true
         }
         stage 'deploy' {
-        unarchive mapping: ['build.tar': 'build.tar']
-
-         
         sshagent(["test_agent"]) {
          sh "scp -o StrictHostKeyChecking=no build.tar ubuntu@${SERVER_IP}:${SERVER_DEPLOY_DIR}"
          sh """
