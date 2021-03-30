@@ -15,7 +15,8 @@ pipeline {
         steps{
          sh 'npm install'
          sh 'npm run build'
-          sh "tar -cvf build.tar build"
+         sh 'mv build calculator'
+          sh "tar -cvf build.tar calculator"
          archiveArtifacts artifacts: 'build.tar', fingerprint: true
         }
         }
