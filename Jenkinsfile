@@ -28,7 +28,7 @@ pipeline {
         sshagent(["ubuntu"]) {
          sh "scp -o StrictHostKeyChecking=no build.tar ubuntu@${SERVER_IP}:${SERVER_DEPLOY_DIR}"
          sh """
-         ssh -o StrictHostKeyChecking=no "sudo mkdir -p ${SERVER_DEPLOY_DIR}"
+         ssh -o StrictHostKeyChecking=no ubuntu@${SERVER_IP} "sudo mkdir -p ${SERVER_DEPLOY_DIR}"
          """
          sh """
          ssh -o StrictHostKeyChecking=no ubuntu@${SERVER_IP} "sudo rm -rf ${SERVER_DEPLOY_DIR}build;sudo tar -xvf ${SERVER_DEPLOY_DIR}build.tar -C ${SERVER_DEPLOY_DIR}"
