@@ -15,7 +15,7 @@ pipeline {
         steps{
          sh 'npm install'
          sh 'npm run build'
-          sh "tar -cvf build.tar /app/build/"
+          sh "tar -cvf build.tar build"
          archiveArtifacts artifacts: 'build.tar', fingerprint: true
         }
         }
