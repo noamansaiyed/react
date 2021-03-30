@@ -13,6 +13,7 @@ pipeline {
     stages {
         stage ('build') {
         steps{
+         sh 'npm install'
          sh 'npm run build'
           sh "tar -cvf build.tar /app/build/"
          archiveArtifacts artifacts: 'build.tar', fingerprint: true
