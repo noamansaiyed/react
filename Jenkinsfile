@@ -8,7 +8,6 @@ pipeline {
     agent {
         docker {
             image 'node:12'
-            args "-v ${env.WORKSPACE}/build_dir:/app/build"
         }
     }
     stages {
